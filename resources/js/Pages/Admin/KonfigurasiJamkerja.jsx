@@ -17,7 +17,6 @@ export default function KonfigurasiJamkerja({ jadwalShift }) {
         nama_jamkerja: "",
         awal_jam_masuk: "",
         jam_masuk: "",
-        akhir_jam_masuk: "",
         jam_pulang: "",
     });
 
@@ -79,9 +78,6 @@ export default function KonfigurasiJamkerja({ jadwalShift }) {
                                                 Jam Masuk
                                             </th>
                                             <th className="px-8 py-2 border border-gray-300">
-                                                Akhir Jam Masuk
-                                            </th>
-                                            <th className="px-8 py-2 border border-gray-300">
                                                 Jam Pulang
                                             </th>
                                             <th className="px-8 py-2 border border-gray-300">
@@ -109,9 +105,6 @@ export default function KonfigurasiJamkerja({ jadwalShift }) {
                                                 </td>
                                                 <td className="px-8 py-2 border border-gray-300">
                                                     {shft.jam_masuk}
-                                                </td>
-                                                <td className="px-8 py-2 border border-gray-300">
-                                                    {shft.akhir_jam_masuk}
                                                 </td>
                                                 <td className="px-8 py-2 border border-gray-300">
                                                     {shft.jam_pulang}
@@ -239,30 +232,6 @@ export default function KonfigurasiJamkerja({ jadwalShift }) {
                                             {errors.jam_masuk && (
                                                 <p className="text-red-500 text-sm ml-40">
                                                     {errors.jam_masuk}
-                                                </p>
-                                            )}
-
-                                            {/* Akhir Jam Masuk */}
-                                            <div className="flex items-center">
-                                                <label className="w-40 font-medium">
-                                                    Akhir Jam Masuk:
-                                                </label>
-                                                <input
-                                                    className="block w-full rounded-md border-0 p-2 text-slate-900 shadow-sm ring-1 ring-slate-300 placeholder:text-slate-500 focus:ring-2 focus:ring-blue-500 sm:text-sm bg-white"
-                                                    type="time"
-                                                    placeholder="Akhir Jam Masuk Kerja"
-                                                    value={data.akhir_jam_masuk}
-                                                    onChange={(e) =>
-                                                        setData(
-                                                            "akhir_jam_masuk",
-                                                            e.target.value
-                                                        )
-                                                    }
-                                                />
-                                            </div>
-                                            {errors.akhir_jam_masuk && (
-                                                <p className="text-red-500 text-sm ml-40">
-                                                    {errors.akhir_jam_masuk}
                                                 </p>
                                             )}
 

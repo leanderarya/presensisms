@@ -116,9 +116,9 @@ class PegawaiController extends Controller
             'tanggal_lahir' => 'date',
         ]); 
 
-        if ($request->hasFile('Foto')) {
+        if ($request->hasFile('foto')) {
             // Generate nama unik untuk file 
-            $fileName = time() . '_' . $request->file('Foto')->getClientOriginalName();
+            $fileName = time() . '_' . $request->file('foto')->getClientOriginalName();
             
             // Folder tujuan
             $destinationPath = storage_path('app/public/pegawai');
@@ -128,10 +128,10 @@ class PegawaiController extends Controller
             }
 
             // Pindahkan file dari folder temp ke folder tujuan
-            $request->file('Foto')->move($destinationPath, $fileName);
+            $request->file('foto')->move($destinationPath, $fileName);
 
             // Simpan path ke database tanpa 'public/'
-            $inputPegawai['Foto'] = 'pegawai/' . $fileName;
+            $inputPegawai['foto'] = 'pegawai/' . $fileName;
         }
 
         // Simpan data pegawai ke database
@@ -140,8 +140,8 @@ class PegawaiController extends Controller
         // Update data di tabel users (jika ada relasi)
         if ($pegawai->user) {
             $pegawai->user->update([
-                'name' => $inputPegawai['nama_lengkap'],
-                'email' => $inputPegawai['email'],
+                'name' => $inputPegawai['nama_lengkap'] ?? $pegawai->user->name,
+                'email' => $inputPegawai['email'] ?? $pegawai->user->email,
             ]);
         }
 

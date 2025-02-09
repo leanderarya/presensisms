@@ -480,7 +480,7 @@ class PresensiController extends Controller
                 's.kode_jamkerja',
                 'k.nama_jamkerja',
                 'k.jam_pulang',
-                DB::raw("COALESCE(k.akhir_jam_masuk, 'Tidak ada data') AS akhir_jam_masuk")
+                DB::raw("COALESCE(k.jam_masuk, 'Tidak ada data') AS akhir_jam_masuk")
             )
             ->orderBy('p.tanggal_presensi', 'asc')
             ->get();
@@ -540,7 +540,7 @@ class PresensiController extends Controller
                 's.hari AS shift_hari',
                 's.kode_jamkerja',
                 'k.jam_pulang',
-                DB::raw("COALESCE(k.akhir_jam_masuk, 'Tidak ada data') AS akhir_jam_masuk")
+                DB::raw("COALESCE(k.jam_masuk, 'Tidak ada data') AS akhir_jam_masuk")
             )
             ->where('p.kode_pegawai', $kode_pegawai)
             ->orderBy('p.tanggal_presensi', 'asc')
@@ -622,7 +622,7 @@ class PresensiController extends Controller
                 'p.tanggal_presensi',
                 's.hari AS shift_hari',
                 's.kode_jamkerja',
-                DB::raw("COALESCE(k.akhir_jam_masuk, 'Tidak ada data') AS akhir_jam_masuk")
+                DB::raw("COALESCE(k.jam_masuk, 'Tidak ada data') AS akhir_jam_masuk")
             )
             ->where('p.kode_pegawai', $idPegawai)
             ->orderBy('p.tanggal_presensi', 'asc')
@@ -661,7 +661,7 @@ class PresensiController extends Controller
             ->select(
                 'set_jam_kerja.id',
                 'set_jam_kerja.hari',
-                'konfigurasi_shift_kerja.akhir_jam_masuk'
+                'konfigurasi_shift_kerja.jam_masuk'
             );
 
         $rekapPresensi = DB::table('presensi')
@@ -738,8 +738,8 @@ class PresensiController extends Controller
                 'p.tanggal_presensi',
                 's.hari AS shift_hari',
                 's.kode_jamkerja',
-                DB::raw("COALESCE(k.akhir_jam_masuk, 'Tidak ada data') AS akhir_jam_masuk"),
-                DB::raw("CASE WHEN TIME(p.jam_in) > TIME(k.akhir_jam_masuk) THEN 1 ELSE 0 END AS terlambat")
+                DB::raw("COALESCE(k.jam_masuk, 'Tidak ada data') AS akhir_jam_masuk"),
+                DB::raw("CASE WHEN TIME(p.jam_in) > TIME(k.jam_masuk) THEN 1 ELSE 0 END AS terlambat")
             )
             ->orderBy('p.tanggal_presensi', 'asc')
             ->get();
@@ -776,7 +776,7 @@ class PresensiController extends Controller
             ->select(
                 'set_jam_kerja.id',
                 'set_jam_kerja.hari',
-                'konfigurasi_shift_kerja.akhir_jam_masuk'
+                'konfigurasi_shift_kerja.jam_masuk'
             );
 
             $rekapPresensi = DB::table('presensi')
@@ -853,8 +853,8 @@ class PresensiController extends Controller
                     'p.tanggal_presensi',
                     's.hari AS shift_hari',
                     's.kode_jamkerja',
-                    DB::raw("COALESCE(k.akhir_jam_masuk, 'Tidak ada data') AS akhir_jam_masuk"),
-                    DB::raw("CASE WHEN TIME(p.jam_in) > TIME(k.akhir_jam_masuk) THEN 1 ELSE 0 END AS terlambat")
+                    DB::raw("COALESCE(k.jam_masuk, 'Tidak ada data') AS akhir_jam_masuk"),
+                    DB::raw("CASE WHEN TIME(p.jam_in) > TIME(k.jam_masuk) THEN 1 ELSE 0 END AS terlambat")
                 )
                 ->orderBy('p.tanggal_presensi', 'asc')
                 ->get();

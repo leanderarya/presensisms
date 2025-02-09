@@ -19,7 +19,6 @@ class konfigurasi_shift_kerja extends Model
         'nama_jamkerja',
         'awal_jam_masuk',
         'jam_masuk',
-        'akhir_jam_masuk',
         'jam_pulang',
     ];
 }

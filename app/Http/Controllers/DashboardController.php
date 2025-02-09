@@ -241,8 +241,8 @@ class DashboardController extends Controller
             ->join('konfigurasi_shift_kerja as k', 's.kode_jamkerja', '=', 'k.kode_jamkerja')
             ->selectRaw('
                 COUNT(p.id) as total_hadir,
-                SUM(IF(p.jam_in > k.akhir_jam_masuk, 1, 0)) as terlambat,
-                SUM(IF(p.jam_in <= k.akhir_jam_masuk, 1, 0)) as tepat_waktu
+                SUM(IF(p.jam_in > k.jam_masuk, 1, 0)) as terlambat,
+                SUM(IF(p.jam_in <= k.jam_masuk, 1, 0)) as tepat_waktu
             ')
             ->whereDate('p.tanggal_presensi', $tanggalTahunHariIni)
             ->where('s.hari', '=', $hariIni)

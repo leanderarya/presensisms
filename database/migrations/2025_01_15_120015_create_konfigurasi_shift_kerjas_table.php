@@ -17,7 +17,6 @@ return new class extends Migration
             $table->char('nama_jamkerja');
             $table->time('awal_jam_masuk');
             $table->time('jam_masuk');
-            $table->time('akhir_jam_masuk');
             $table->time('jam_pulang');
             $table->timestamps();
         });

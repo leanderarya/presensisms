@@ -36,7 +36,6 @@ class KonfigurasiShiftKerjaController extends Controller
             'nama_jamkerja' => 'required',
             'awal_jam_masuk' => 'required',
             'jam_masuk' => 'required',
-            'akhir_jam_masuk' => 'required',
             'jam_pulang' => 'required',
         ]);
 
@@ -84,7 +83,6 @@ class KonfigurasiShiftKerjaController extends Controller
             'nama_jamkerja' => 'required',
             'awal_jam_masuk' => 'required',
             'jam_masuk' => 'required',
-            'akhir_jam_masuk' => 'required',
             'jam_pulang' => 'required',
         ]);
 
